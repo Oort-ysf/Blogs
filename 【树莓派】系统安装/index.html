@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Blogs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Blogs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Blogs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Blogs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Blogs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"oort-ysf.github.io","root":"/Blogs/","images":"/Blogs/images","scheme":"Gemini","darkmode":false,"version":"8.12.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/Blogs/js/config.js"></script>
+
+    <meta name="description" content="树莓派系统安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【树莓派】系统安装">
+<meta property="og:url" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Oort.">
+<meta property="og:description" content="树莓派系统安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-1%20%E4%B8%8B%E8%BD%BDImager%E5%B7%A5%E5%85%B7.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-2%20%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-2%20%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F-2.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-2%20%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F-3.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-1%20IP%E6%89%AB%E6%8F%8F.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-2%20%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-2%20%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE-2.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-3%20%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE-3.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-4%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-4%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5-2.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-4%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5-3.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/%E6%A0%91%E8%8E%93%E6%B4%BE/%E5%BC%80%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BEVNC%E5%8A%9F%E8%83%BD-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/%E6%A0%91%E8%8E%93%E6%B4%BE/%E5%BC%80%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BEVNC%E5%8A%9F%E8%83%BD-2.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/%E6%A0%91%E8%8E%93%E6%B4%BE/%E5%BC%80%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BEVNC%E5%8A%9F%E8%83%BD-3.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-6%20%E4%BD%BF%E7%94%A8VNC%E8%AE%BF%E9%97%AE%E6%A0%91%E8%8E%93%E6%B4%BE-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-7%20%E5%88%86%E9%85%8D%E9%9D%99%E6%80%81IP-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-7%20%E5%88%86%E9%85%8D%E9%9D%99%E6%80%81IP-2.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-8%20%E7%95%8C%E9%9D%A2%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/%E6%A0%91%E8%8E%93%E6%B4%BE/%E4%BF%AE%E6%94%B9%E5%88%86%E8%BE%A8%E7%8E%87-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/%E6%A0%91%E8%8E%93%E6%B4%BE/%E4%BF%AE%E6%94%B9%E5%88%86%E8%BE%A8%E7%8E%87-2.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/%E6%A0%91%E8%8E%93%E6%B4%BE/%E4%BF%AE%E6%94%B9%E5%88%86%E8%BE%A8%E7%8E%87-3.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-1%20%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%AE%B9%E9%87%8F.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-2%20%E7%94%9F%E6%88%90%E9%95%9C%E5%83%8F.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-3%20%E6%98%A0%E5%83%8F%E5%86%99%E5%85%A5.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-4%20%E7%B3%BB%E7%BB%9F%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/5-1%20ssh%E7%99%BB%E5%BD%95root%E8%B4%A6%E6%88%B7-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/5-1%20ssh%E7%99%BB%E5%BD%95root%E8%B4%A6%E6%88%B7-2.png">
+<meta property="article:published_time" content="2022-07-25T14:54:13.000Z">
+<meta property="article:modified_time" content="2022-08-08T14:10:22.000Z">
+<meta property="article:author" content="Oort">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-1%20%E4%B8%8B%E8%BD%BDImager%E5%B7%A5%E5%85%B7.png">
+
+
+<link rel="canonical" href="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/","path":"【树莓派】系统安装/","title":"【树莓派】系统安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【树莓派】系统安装 | Oort.</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/Blogs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/Blogs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oort.</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Personal Blogs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/Blogs/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/Blogs/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a></li><li class="menu-item menu-item-archives"><a href="/Blogs/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%9B%B8%E5%85%B3%E8%AE%BE%E5%A4%87%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">1、相关设备信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">2、系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E7%83%A7%E5%BD%95%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、烧录工具下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、烧录系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E4%BD%BF%E7%94%A8SSH"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、使用SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4%E3%80%81%E9%85%8D%E7%BD%AE%E8%BF%9E%E6%8E%A5WiFi"><span class="nav-number">2.4.</span> <span class="nav-text">2.4、配置连接WiFi</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E8%BF%90%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">3、运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E6%97%A0%E5%B1%8F%E5%B9%95"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、无屏幕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-0%E3%80%81%E5%B7%A5%E5%85%B7"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.0、工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.1、准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2%E3%80%81%E8%8E%B7%E5%8F%96%E6%A0%91%E8%8E%93%E6%B4%BEIP"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.2、获取树莓派IP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3%E3%80%81%E4%BD%BF%E7%94%A8PuTTY%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.3、使用PuTTY连接树莓派</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4%E3%80%81%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%AE%BF%E9%97%AE%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">3.1.5.</span> <span class="nav-text">3.1.4、使用远程桌面访问树莓派</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-5%E3%80%81%E4%BD%BF%E7%94%A8VNC%E8%AE%BF%E9%97%AE%E6%A0%91%E8%8E%93%E6%B4%BE"><span class="nav-number">3.1.6.</span> <span class="nav-text">3.1.5、使用VNC访问树莓派</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%A4%87%E4%BB%BD%E4%B8%8E%E8%BF%98%E5%8E%9F"><span class="nav-number">4.</span> <span class="nav-text">4、备份与还原</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E3%80%81%E5%A4%87%E4%BB%BD"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E3%80%81%E8%BF%98%E5%8E%9F"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、还原</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E5%BC%80%E6%9C%BA%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">5、开机后的一些配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1%E3%80%81%E5%90%AF%E7%94%A8root%E7%94%A8%E6%88%B7"><span class="nav-number">5.1.</span> <span class="nav-text">5.1、启用root用户</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oort"
+      src="/Blogs/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Oort</p>
+  <div class="site-description" itemprop="description">This is personal blogs for Oort.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/Blogs/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/Blogs/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oort-ysf" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oort-ysf" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ysf504703038@163.com" title="E-Mail → mailto:ysf504703038@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Blogs/images/avatar.jpg">
+      <meta itemprop="name" content="Oort">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oort.">
+      <meta itemprop="description" content="This is personal blogs for Oort.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【树莓派】系统安装 | Oort.">
+      <meta itemprop="description" content="树莓派系统安装">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【树莓派】系统安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-07-25 22:54:13" itemprop="dateCreated datePublished" datetime="2022-07-25T22:54:13+08:00">2022-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-08-08 22:10:22" itemprop="dateModified" datetime="2022-08-08T22:10:22+08:00">2022-08-08</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">树莓派系统安装</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="1、相关设备信息"><a href="#1、相关设备信息" class="headerlink" title="1、相关设备信息"></a>1、相关设备信息</h2><p><code>Raspberry Pi : 4B(2G)</code><br><code>TF卡 : 32G</code><br><code>电源 : 5.1V/3A</code></p>
+<h2 id="2、系统安装"><a href="#2、系统安装" class="headerlink" title="2、系统安装"></a>2、系统安装</h2><h3 id="2-1、烧录工具下载"><a href="#2-1、烧录工具下载" class="headerlink" title="2.1、烧录工具下载"></a>2.1、烧录工具下载</h3><p>在 <a target="_blank" rel="noopener" href="https://www.raspberrypi.org/downloads/">官网下载地址</a> 下载 <code>Raspberry Pi Imager</code>工具</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-1%20%E4%B8%8B%E8%BD%BDImager%E5%B7%A5%E5%85%B7.png" alt="2-1 下载Imager工具"></p>
+<h3 id="2-2、烧录系统"><a href="#2-2、烧录系统" class="headerlink" title="2.2、烧录系统"></a>2.2、烧录系统</h3><p>安装完成后运行工具选择要安装的系统版本以及SD卡</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-2%20%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F-1.png" alt="2-2 烧录系统-1"></p>
+<p>选择系统后可以对系统镜像进行预配置</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-2%20%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F-2.png" alt="2-2 烧录系统-2"></p>
+<p>可根据自己的需求进行配置</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/2-2%20%E7%83%A7%E5%BD%95%E7%B3%BB%E7%BB%9F-3.png" alt="2-2 烧录系统-3"></p>
+<h3 id="2-3、使用SSH"><a href="#2-3、使用SSH" class="headerlink" title="2.3、使用SSH"></a>2.3、使用SSH</h3><p>除了2.2章节中的方法还可以在在 <code>boot</code> 分区中新建空白文件 <code>ssh</code> (<strong>注意：没有后缀名</strong>) ，以开启SSH。</p>
+<h3 id="2-4、配置连接WiFi"><a href="#2-4、配置连接WiFi" class="headerlink" title="2.4、配置连接WiFi"></a>2.4、配置连接WiFi</h3><p>按照2.2章节已配置WiFi的话可以跳过该章节</p>
+<p>不启动树莓派的情况下可以在<code>boot</code>分区创建<code>wpa_supplicant.conf</code> 文件进行WiFi配置，配置内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">country=CN</span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line"> </span><br><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;WiFi-A&quot;</span><br><span class="line">psk=&quot;12345678&quot;</span><br><span class="line">key_mgmt=WPA-PSK</span><br><span class="line">priority=1</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;WiFi-B&quot;</span><br><span class="line">psk=&quot;12345678&quot;</span><br><span class="line">key_mgmt=WPA-PSK</span><br><span class="line">priority=2</span><br><span class="line">scan_ssid=1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明以及不同安全性的 WiFi 配置示例：</p>
+<blockquote>
+<p><code>ssid</code>：网络的ssid<br><code>psk</code>：密码<br><code>priority</code>：连接优先级，数字越大优先级越高（不可以是负数）<br><code>scan_ssid</code>：连接隐藏WiFi时需要指定该值为1</p>
+</blockquote>
+<p>如果你的 WiFi 没有密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;你的无线网络名称（ssid）&quot;</span><br><span class="line">key_mgmt=NONE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你的 WiFi 使用WEP加密</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;你的无线网络名称（ssid）&quot;</span><br><span class="line">key_mgmt=NONE</span><br><span class="line">wep_key0=&quot;你的wifi密码&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你的 WiFi 使用WPA&#x2F;WPA2加密</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">ssid=&quot;你的无线网络名称（ssid）&quot;</span><br><span class="line">key_mgmt=WPA-PSK</span><br><span class="line">psk=&quot;你的wifi密码&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="3、运行"><a href="#3、运行" class="headerlink" title="3、运行"></a>3、运行</h2><h3 id="3-1、无屏幕"><a href="#3-1、无屏幕" class="headerlink" title="3.1、无屏幕"></a>3.1、无屏幕</h3><h4 id="3-1-0、工具"><a href="#3-1-0、工具" class="headerlink" title="3.1.0、工具"></a>3.1.0、工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.advanced-ip-scanner.com/cn/">Advanced IP Scanner</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>或<a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/">MobaX</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.realvnc.com/en/connect/download/viewer/">VNC Viewer</a></li>
+</ul>
+<h4 id="3-1-1、准备工作"><a href="#3-1-1、准备工作" class="headerlink" title="3.1.1、准备工作"></a>3.1.1、准备工作</h4><p>将之前准备好的TF卡插入树莓派并接通电源，给树莓派连接网络(让PC与树莓派处于同一局域网内)。</p>
+<h4 id="3-1-2、获取树莓派IP"><a href="#3-1-2、获取树莓派IP" class="headerlink" title="3.1.2、获取树莓派IP"></a>3.1.2、获取树莓派IP</h4><p>使用 <code>Advanced IP Scanner</code> 扫描IP地址，找到树莓派的地址</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-1%20IP%E6%89%AB%E6%8F%8F.png" alt="3-1 IP扫描"></p>
+<h4 id="3-1-3、使用PuTTY连接树莓派"><a href="#3-1-3、使用PuTTY连接树莓派" class="headerlink" title="3.1.3、使用PuTTY连接树莓派"></a>3.1.3、使用PuTTY连接树莓派</h4><p>使用 <code>PuTTY</code> 连接树莓派，<del>如果不确定那个是树莓派的IP地址就挨个尝试一下。。。。。</del></p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-2%20%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE-1.png" alt="3-2 连接树莓派-1"></p>
+<p>如果连接成功会提示你输入登录用户名以及密码</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-2%20%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE-2.png" alt="3-2 连接树莓派-2"></p>
+<p>登录账号及密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在2022年4月份更新后官方取消了默认账户密码，可通过镜像预配置账户密码，详情参考2.2章节</span></span><br><span class="line"><span class="comment"># 树莓派默认用户名及密码</span></span><br><span class="line">username: pi</span><br><span class="line">password: raspberry</span><br></pre></td></tr></table></figure>
+
+<p>连接成功界面</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-3%20%E8%BF%9E%E6%8E%A5%E6%A0%91%E8%8E%93%E6%B4%BE-3.png" alt="3-3 连接树莓派-3"></p>
+<p>当成功使用PuTTY连接到树莓派后就可以给树莓派分配静态IP地址，之后就不需要再扫描IP地址了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 vi 编辑文件，增加下列配置项</span></span><br><span class="line">sudo vi /etc/dhcpcd.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 制定接口 eth0 //有线</span></span><br><span class="line"><span class="comment"># interface eth0</span></span><br><span class="line"><span class="comment"># 指定接口 wlan0 //无线</span></span><br><span class="line">interface wlan0</span><br><span class="line"><span class="comment"># 指定静态IP，/24表示子网掩码为 255.255.255.0</span></span><br><span class="line">static ip_address=192.168.1.150/24</span><br><span class="line"><span class="comment"># 路由器/网关IP地址</span></span><br><span class="line">static routers=192.168.1.1</span><br><span class="line"><span class="comment"># 手动自定义DNS服务器</span></span><br><span class="line">static domain_name_servers=114.114.114.114</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后重启设备</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="3-1-4、使用远程桌面访问树莓派"><a href="#3-1-4、使用远程桌面访问树莓派" class="headerlink" title="3.1.4、使用远程桌面访问树莓派"></a>3.1.4、使用远程桌面访问树莓派</h4><p>先使用 <code>PuTTY</code> 连接树莓派安装 <code>xrdp</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xrdp</span><br></pre></td></tr></table></figure>
+
+<p><em>可能因为网络原因需要切换源</em> </p>
+<p>切换为国内源</p>
+<p>编辑 <code>sources.list</code> 注释或删除原有的源添加新的源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 不习惯vi可以用nano</span></span><br><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 最后更新一下 apt-get </span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>常用源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里云</span></span><br><span class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清华大学</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 华中科技大学</span></span><br><span class="line">deb http://mirrors.hustunique.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.hustunique.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 华南农业大学</span></span><br><span class="line">deb http://mirrors.scau.edu.cn/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.scau.edu.cn/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 大连东软信息学院</span></span><br><span class="line">deb http://mirrors.neusoft.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重庆大学</span></span><br><span class="line">deb http://mirrors.cqu.edu.cn/Raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.cqu.edu.cn/Raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>运行 <code>xrdp</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xrdp</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>PC</code> 上启动 <em>远程桌面连接</em> </p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-4%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5-1.png" alt="3-4 远程桌面连接-1"></p>
+<p>输入密码</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-4%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5-2.png" alt="3-4 远程桌面连接-2"></p>
+<p>成功连接到树莓派</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-4%20%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5-3.png" alt="3-4 远程桌面连接-3"></p>
+<h4 id="3-1-5、使用VNC访问树莓派"><a href="#3-1-5、使用VNC访问树莓派" class="headerlink" title="3.1.5、使用VNC访问树莓派"></a>3.1.5、使用VNC访问树莓派</h4><p>1、开启树莓派VNC功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<div align="left"><img src="%E6%A0%91%E8%8E%93%E6%B4%BE/%E5%BC%80%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BEVNC%E5%8A%9F%E8%83%BD-1.png" alt="开启树莓派VNC功能-1" style="zoom:50%;" /><img src="%E6%A0%91%E8%8E%93%E6%B4%BE/%E5%BC%80%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BEVNC%E5%8A%9F%E8%83%BD-2.png" alt="开启树莓派VNC功能-2" style="zoom:50%;" /><img src="%E6%A0%91%E8%8E%93%E6%B4%BE/%E5%BC%80%E5%90%AF%E6%A0%91%E8%8E%93%E6%B4%BEVNC%E5%8A%9F%E8%83%BD-3.png" alt="开启树莓派VNC功能-3" style="zoom:50%;" />
+</div><div style="clear:both;"/>
+
+
+
+
+<p>2、连接树莓派</p>
+<p>输入树莓派IP地址进行连接，输入账号密码登录</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-6%20%E4%BD%BF%E7%94%A8VNC%E8%AE%BF%E9%97%AE%E6%A0%91%E8%8E%93%E6%B4%BE-1.png" alt="3-6 使用VNC访问树莓派-1"></p>
+<p>也可以再使用 <code>VNC</code> 连接树莓派后，右键点击 <code>WLAN</code> 图标选择网络设置</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-7%20%E5%88%86%E9%85%8D%E9%9D%99%E6%80%81IP-1.png" alt="3-7 分配静态IP-1"></p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-7%20%E5%88%86%E9%85%8D%E9%9D%99%E6%80%81IP-2.png" alt="3-7 分配静态IP-2"></p>
+<p>配置完后重启树莓派</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>3、遇到的问题</p>
+<p><code>VNC Viewer</code> 无法显示界面</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/3-8%20%E7%95%8C%E9%9D%A2%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA.png" alt="3-8 界面无法显示"></p>
+<p>解决方法：修改树莓派的分辨率</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo raspi-config</span><br></pre></td></tr></table></figure>
+
+<div align="left"><img src="%E6%A0%91%E8%8E%93%E6%B4%BE/%E4%BF%AE%E6%94%B9%E5%88%86%E8%BE%A8%E7%8E%87-1.png" alt="修改分辨率-1" style="zoom:50%;" /><img src="%E6%A0%91%E8%8E%93%E6%B4%BE/%E4%BF%AE%E6%94%B9%E5%88%86%E8%BE%A8%E7%8E%87-2.png" alt="修改分辨率-2" style="zoom:50%;" /><img src="%E6%A0%91%E8%8E%93%E6%B4%BE/%E4%BF%AE%E6%94%B9%E5%88%86%E8%BE%A8%E7%8E%87-3.png" alt="修改分辨率-3" style="zoom:50%;" />
+</div><div style="clear:both;"/>
+
+
+<p>重启树莓派</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4、备份与还原"><a href="#4、备份与还原" class="headerlink" title="4、备份与还原"></a>4、备份与还原</h2><h3 id="4-1、备份"><a href="#4-1、备份" class="headerlink" title="4.1、备份"></a>4.1、备份</h3><p>1、调整TF卡中系统分区容量，使其没有空闲空间</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-1%20%E8%B0%83%E6%95%B4%E5%88%86%E5%8C%BA%E5%AE%B9%E9%87%8F.png" alt="4-1 调整分区容量"></p>
+<p>2、使用 <code>Win32DiskImager</code> 从TF卡中读取并生成镜像</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-2%20%E7%94%9F%E6%88%90%E9%95%9C%E5%83%8F.png" alt="4-2 生成镜像"></p>
+<p>3、最后不要忘了将分区容量调整回原始大小</p>
+<h3 id="4-2、还原"><a href="#4-2、还原" class="headerlink" title="4.2、还原"></a>4.2、还原</h3><p>1、使用 <code>Win32DiskImager</code> 工具将映像写入TF卡</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-3%20%E6%98%A0%E5%83%8F%E5%86%99%E5%85%A5.png" alt="4-3 映像写入"></p>
+<p>2、使用分区工具调整系统分区容量</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/4-4%20%E7%B3%BB%E7%BB%9F%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9.png" alt="4-4 系统分区扩容"></p>
+<h2 id="5、开机后的一些配置"><a href="#5、开机后的一些配置" class="headerlink" title="5、开机后的一些配置"></a>5、开机后的一些配置</h2><h3 id="5-1、启用root用户"><a href="#5-1、启用root用户" class="headerlink" title="5.1、启用root用户"></a>5.1、启用root用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改root用户密码</span></span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解锁root用户</span></span><br><span class="line">sudo passwd --unlock root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到root用户</span></span><br><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<p>如果使用ssh无法登录root用户，修改<code>/etc/ssh/sshd_config</code>配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改/etc/ssh/sshd_config</span></span><br><span class="line">sudo nano /etc/ssh/sshd_config</span><br><span class="line"><span class="comment"># 按照下图进行修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改完成后重启ssh服务</span></span><br><span class="line">service ssh restart</span><br></pre></td></tr></table></figure>
+
+<p>修改前：</p>
+<blockquote>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/5-1%20ssh%E7%99%BB%E5%BD%95root%E8%B4%A6%E6%88%B7-1.png" alt="5-1 ssh登录root账户-1"></p>
+</blockquote>
+<p>修改后：</p>
+<blockquote>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/5-1%20ssh%E7%99%BB%E5%BD%95root%E8%B4%A6%E6%88%B7-2.png" alt="5-1 ssh登录root账户-2"></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Blogs/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/Blogs/%E3%80%90%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%E3%80%91Linux%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86/" rel="next" title="【知识总结】Linux常用知识">
+                  【知识总结】Linux常用知识 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oort</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/Blogs/js/comments.js"></script><script src="/Blogs/js/utils.js"></script><script src="/Blogs/js/motion.js"></script><script src="/Blogs/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/Blogs/js/third-party/fancybox.js"></script>
+
+  <script src="/Blogs/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

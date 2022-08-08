@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 5.4.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Blogs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Blogs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Blogs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Blogs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Blogs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"oort-ysf.github.io","root":"/Blogs/","images":"/Blogs/images","scheme":"Gemini","darkmode":false,"version":"8.12.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/Blogs/js/config.js"></script>
+
+    <meta name="description" content="常用应用安装，包括开发语言、常用工具等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【树莓派】常用应用">
+<meta property="og:url" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Oort.">
+<meta property="og:description" content="常用应用安装，包括开发语言、常用工具等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/2-1%20gcc%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/3-1%20python%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/4-1%20java%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/5-1%20git%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-1%20nodejs%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-2%20nodejs%E8%A7%A3%E5%8E%8B.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-3%20nodejs%E5%AE%89%E8%A3%85.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-4%20nodejs%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-1%20make%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-2%20cmake%E4%B8%8B%E8%BD%BD.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-3%20cmake%E8%A7%A3%E5%8E%8B.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-4%20cmake%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF-1.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-5%20cmake%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/8-1%20apache2%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/9-1%20hexo%E7%89%88%E6%9C%AC.png">
+<meta property="article:published_time" content="2022-08-08T13:37:13.000Z">
+<meta property="article:modified_time" content="2022-08-08T13:59:20.000Z">
+<meta property="article:author" content="Oort">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/2-1%20gcc%E7%89%88%E6%9C%AC.png">
+
+
+<link rel="canonical" href="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/","path":"【树莓派】常用应用安装/","title":"【树莓派】常用应用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【树莓派】常用应用 | Oort.</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/Blogs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/Blogs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Oort.</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Personal Blogs</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/Blogs/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/Blogs/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a></li><li class="menu-item menu-item-archives"><a href="/Blogs/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">6</span></a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0%E3%80%81%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">0、更换镜像源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Linux%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">1、Linux常用工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1%E3%80%81vim"><span class="nav-number">2.1.</span> <span class="nav-text">1.1、vim</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1.1、安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2%E3%80%81FTP"><span class="nav-number">2.2.</span> <span class="nav-text">1.2、FTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.2.1、安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2%E3%80%81FTP%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.2.2.</span> <span class="nav-text">1.2.2、FTP文件下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3%E3%80%81FTP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">2.2.3.</span> <span class="nav-text">1.2.3、FTP文件上传</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81C-x2F-C"><span class="nav-number">3.</span> <span class="nav-text">2、C&#x2F;C++</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">3.1.</span> <span class="nav-text">2.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">2.2、查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81Python"><span class="nav-number">4.</span> <span class="nav-text">3、Python</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">3.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 、查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81Java"><span class="nav-number">5.</span> <span class="nav-text">4、Java</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">5.1.</span> <span class="nav-text">4.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">5.2.</span> <span class="nav-text">4.2、查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81Git"><span class="nav-number">6.</span> <span class="nav-text">5、Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">6.1.</span> <span class="nav-text">5.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">6.2.</span> <span class="nav-text">5.2、查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81Nodejs"><span class="nav-number">7.</span> <span class="nav-text">6、Nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">7.1.</span> <span class="nav-text">6.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">7.2.</span> <span class="nav-text">6.2、查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81Make-x2F-CMake"><span class="nav-number">8.</span> <span class="nav-text">7、Make&#x2F;CMake</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1%E3%80%81%E5%AE%89%E8%A3%85Make"><span class="nav-number">8.1.</span> <span class="nav-text">7.1、安装Make</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">8.2.</span> <span class="nav-text">7.2、查看版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3%E3%80%81%E5%AE%89%E8%A3%85CMake"><span class="nav-number">8.3.</span> <span class="nav-text">7.3、安装CMake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">8.4.</span> <span class="nav-text">7.4、查看版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8%E3%80%81Apache2"><span class="nav-number">9.</span> <span class="nav-text">8、Apache2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">9.1.</span> <span class="nav-text">8.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">9.2.</span> <span class="nav-text">8.2、查看版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3%E3%80%81%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="nav-number">9.3.</span> <span class="nav-text">8.3、服务器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4%E3%80%81%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-number">9.4.</span> <span class="nav-text">8.4、安装插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E3%80%81Hexo"><span class="nav-number">10.</span> <span class="nav-text">9、Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1%E3%80%81%E5%AE%89%E8%A3%85"><span class="nav-number">10.1.</span> <span class="nav-text">9.1、安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2%E3%80%81%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="nav-number">10.2.</span> <span class="nav-text">9.2、查看版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">10.3.</span> <span class="nav-text">9.3、初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4%E3%80%81%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">10.4.</span> <span class="nav-text">9.4、常用命令</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Oort"
+      src="/Blogs/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Oort</p>
+  <div class="site-description" itemprop="description">This is personal blogs for Oort.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/Blogs/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/Blogs/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Oort-ysf" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Oort-ysf" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ysf504703038@163.com" title="E-Mail → mailto:ysf504703038@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://oort-ysf.github.io/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Blogs/images/avatar.jpg">
+      <meta itemprop="name" content="Oort">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Oort.">
+      <meta itemprop="description" content="This is personal blogs for Oort.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【树莓派】常用应用 | Oort.">
+      <meta itemprop="description" content="常用应用安装，包括开发语言、常用工具等">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【树莓派】常用应用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-08-08 21:37:13 / 修改时间：21:59:20" itemprop="dateCreated datePublished" datetime="2022-08-08T21:37:13+08:00">2022-08-08</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">常用应用安装，包括开发语言、常用工具等</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="0、更换镜像源"><a href="#0、更换镜像源" class="headerlink" title="0、更换镜像源"></a>0、更换镜像源</h2><p>如果默认的镜像源较慢可以切换成国内的镜像源，编辑 <code>sources.list</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 不习惯vi可以用nano</span></span><br><span class="line">sudo nano /etc/apt/sources.list</span><br><span class="line"><span class="comment"># 最后更新一下 apt-get </span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>常用源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中国科学技术大学</span></span><br><span class="line">deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 阿里云</span></span><br><span class="line">deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清华大学</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 华中科技大学</span></span><br><span class="line">deb http://mirrors.hustunique.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.hustunique.com/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 华南农业大学</span></span><br><span class="line">deb http://mirrors.scau.edu.cn/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.scau.edu.cn/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 大连东软信息学院</span></span><br><span class="line">deb http://mirrors.neusoft.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重庆大学</span></span><br><span class="line">deb http://mirrors.cqu.edu.cn/Raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line">deb-src http://mirrors.cqu.edu.cn/Raspbian/raspbian/ stretch main contrib non-free</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="1、Linux常用工具"><a href="#1、Linux常用工具" class="headerlink" title="1、Linux常用工具"></a>1、Linux常用工具</h2><h3 id="1-1、vim"><a href="#1-1、vim" class="headerlink" title="1.1、vim"></a>1.1、vim</h3><h4 id="1-1-1、安装"><a href="#1-1-1、安装" class="headerlink" title="1.1.1、安装"></a>1.1.1、安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2、FTP"><a href="#1-2、FTP" class="headerlink" title="1.2、FTP"></a>1.2、FTP</h3><h4 id="1-2-1、安装"><a href="#1-2-1、安装" class="headerlink" title="1.2.1、安装"></a>1.2.1、安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ftp</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-2、FTP文件下载"><a href="#1-2-2、FTP文件下载" class="headerlink" title="1.2.2、FTP文件下载"></a>1.2.2、FTP文件下载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ftp &#123;服务器IP地址&#125;</span><br><span class="line">get &#123;文件名称&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-2-3、FTP文件上传"><a href="#1-2-3、FTP文件上传" class="headerlink" title="1.2.3、FTP文件上传"></a>1.2.3、FTP文件上传</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ftp &#123;服务器IP地址&#125;</span><br><span class="line">put &#123;文件名称&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2、C-x2F-C"><a href="#2、C-x2F-C" class="headerlink" title="2、C&#x2F;C++"></a>2、C&#x2F;C++</h2><h3 id="2-1、安装"><a href="#2-1、安装" class="headerlink" title="2.1、安装"></a>2.1、安装</h3><p>默认自带<code>gcc</code></p>
+<h3 id="2-2、查看版本"><a href="#2-2、查看版本" class="headerlink" title="2.2、查看版本"></a>2.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/2-1%20gcc%E7%89%88%E6%9C%AC.png" alt="2-1 gcc版本"></p>
+<h2 id="3、Python"><a href="#3、Python" class="headerlink" title="3、Python"></a>3、Python</h2><h3 id="3-1、安装"><a href="#3-1、安装" class="headerlink" title="3.1、安装"></a>3.1、安装</h3><p>默认自带<code>python</code></p>
+<h3 id="3-2-、查看版本"><a href="#3-2-、查看版本" class="headerlink" title="3.2 、查看版本"></a>3.2 、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/3-1%20python%E7%89%88%E6%9C%AC.png" alt="3-1 python版本"></p>
+<h2 id="4、Java"><a href="#4、Java" class="headerlink" title="4、Java"></a>4、Java</h2><h3 id="4-1、安装"><a href="#4-1、安装" class="headerlink" title="4.1、安装"></a>4.1、安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install default-jdk</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2、查看版本"><a href="#4-2、查看版本" class="headerlink" title="4.2、查看版本"></a>4.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/4-1%20java%E7%89%88%E6%9C%AC.png" alt="4-1 java版本"></p>
+<h2 id="5、Git"><a href="#5、Git" class="headerlink" title="5、Git"></a>5、Git</h2><h3 id="5-1、安装"><a href="#5-1、安装" class="headerlink" title="5.1、安装"></a>5.1、安装</h3><p>默认自带<code>git</code></p>
+<h3 id="5-2、查看版本"><a href="#5-2、查看版本" class="headerlink" title="5.2、查看版本"></a>5.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/5-1%20git%E7%89%88%E6%9C%AC.png" alt="5-1 git版本"></p>
+<h2 id="6、Nodejs"><a href="#6、Nodejs" class="headerlink" title="6、Nodejs"></a>6、Nodejs</h2><h3 id="6-1、安装"><a href="#6-1、安装" class="headerlink" title="6.1、安装"></a>6.1、安装</h3><p>1、从<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">官网</a>下载源码</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-1%20nodejs%E4%B8%8B%E8%BD%BD.png" alt="6-1 nodejs下载"></p>
+<p>2、上传到树莓派并解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf node-v16.16.0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-2%20nodejs%E8%A7%A3%E5%8E%8B.png" alt="6-2 nodejs解压"></p>
+<p>3、编译并安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> node-v16.16.0</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-3%20nodejs%E5%AE%89%E8%A3%85.png" alt="6-3 nodejs安装"></p>
+<h3 id="6-2、查看版本"><a href="#6-2、查看版本" class="headerlink" title="6.2、查看版本"></a>6.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/6-4%20nodejs%E7%89%88%E6%9C%AC.png" alt="6-4 nodejs版本"></p>
+<h2 id="7、Make-x2F-CMake"><a href="#7、Make-x2F-CMake" class="headerlink" title="7、Make&#x2F;CMake"></a>7、Make&#x2F;CMake</h2><h3 id="7-1、安装Make"><a href="#7-1、安装Make" class="headerlink" title="7.1、安装Make"></a>7.1、安装Make</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install make</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2、查看版本"><a href="#7-2、查看版本" class="headerlink" title="7.2、查看版本"></a>7.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-1%20make%E7%89%88%E6%9C%AC.png" alt="7-1 make版本"></p>
+<h3 id="7-3、安装CMake"><a href="#7-3、安装CMake" class="headerlink" title="7.3、安装CMake"></a>7.3、安装CMake</h3><p>1、<a target="_blank" rel="noopener" href="https://cmake.org/download/">官网</a>下载源码</p>
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-2%20cmake%E4%B8%8B%E8%BD%BD.png" alt="7-2 cmake下载"></p>
+<p>2、上传到树莓派并解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf cmake-3.24.0-rc4.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-3%20cmake%E8%A7%A3%E5%8E%8B.png" alt="7-3 cmake解压"></p>
+<p>3、编译并安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> cmake-3.24.0-rc4</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>若遇到如下错误可执行下列命令安装OpenSSL development package</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-4%20cmake%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF-1.png" alt="7-4 cmake编译错误-1"></p>
+<h3 id="7-4、查看版本"><a href="#7-4、查看版本" class="headerlink" title="7.4、查看版本"></a>7.4、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake --version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/7-5%20cmake%E7%89%88%E6%9C%AC.png" alt="7-5 cmake版本"></p>
+<h2 id="8、Apache2"><a href="#8、Apache2" class="headerlink" title="8、Apache2"></a>8、Apache2</h2><h3 id="8-1、安装"><a href="#8-1、安装" class="headerlink" title="8.1、安装"></a>8.1、安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2、查看版本"><a href="#8-2、查看版本" class="headerlink" title="8.2、查看版本"></a>8.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apache2 -version</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/8-1%20apache2%E7%89%88%E6%9C%AC.png" alt="8-1 apache2版本"></p>
+<h3 id="8-3、服务器配置"><a href="#8-3、服务器配置" class="headerlink" title="8.3、服务器配置"></a>8.3、服务器配置</h3><p><font color="#808080">待补充</font></p>
+<h3 id="8-4、安装插件"><a href="#8-4、安装插件" class="headerlink" title="8.4、安装插件"></a>8.4、安装插件</h3><p><font color="#808080">待补充</font></p>
+<h2 id="9、Hexo"><a href="#9、Hexo" class="headerlink" title="9、Hexo"></a>9、Hexo</h2><h3 id="9-1、安装"><a href="#9-1、安装" class="headerlink" title="9.1、安装"></a>9.1、安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2、查看版本"><a href="#9-2、查看版本" class="headerlink" title="9.2、查看版本"></a>9.2、查看版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E7%94%A8%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85/9-1%20hexo%E7%89%88%E6%9C%AC.png" alt="9-1 hexo版本"></p>
+<h3 id="9-3、初始化"><a href="#9-3、初始化" class="headerlink" title="9.3、初始化"></a>9.3、初始化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> Blogs</span><br><span class="line"><span class="built_in">cd</span> Blogs</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-4、常用命令"><a href="#9-4、常用命令" class="headerlink" title="9.4、常用命令"></a>9.4、常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理缓存</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="comment"># 生成页面</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 部署本地server</span></span><br><span class="line">hexo server</span><br><span class="line"><span class="comment"># 远端部署</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment"># 创建页面</span></span><br><span class="line">hexo new &#123;页面主题&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Blogs/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Blogs/%E3%80%90%E6%A0%91%E8%8E%93%E6%B4%BE%E3%80%91%E5%B8%B8%E8%A7%81%E5%A4%96%E8%AE%BE/" rel="prev" title="【树莓派】常见外设">
+                  <i class="fa fa-chevron-left"></i> 【树莓派】常见外设
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Blogs/%E3%80%90hexo%E3%80%91%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" rel="next" title="【Hexo】博客美化">
+                  【Hexo】博客美化 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Oort</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/Blogs/js/comments.js"></script><script src="/Blogs/js/utils.js"></script><script src="/Blogs/js/motion.js"></script><script src="/Blogs/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/Blogs/js/third-party/fancybox.js"></script>
+
+  <script src="/Blogs/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>
